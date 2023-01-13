@@ -1,5 +1,6 @@
 var startButton = document.querySelector("#start");
-var timer = document.querySelector("#timer");
+var timer = document.querySelector("#time");
+var startScreen = document.querySelector("#start-screen");
 
 // A start button that when clicked a timer starts and the first question appears.
 
@@ -17,7 +18,14 @@ var timer = document.querySelector("#timer");
 
 startButton.addEventListener("click", displayAnswers);
 
-
+// Make a var playQuiz = false
+var playQuiz = false;
+// Make a var timerCount = 0
+var timerCount = 0;
+// Make a var Currentscore = 0
+var Currentscore;
+// Make a var highScore = 0
+var highScore;
 
 // click listen event on button - when clicked - set playQuiz = true
 
@@ -56,3 +64,13 @@ startButton.addEventListener("click", displayAnswers);
 
 // }
 
+startTimer = function () {
+  var time = setInterval(function () {
+    timerCount++;
+    timer.innerHTML = timerCount;
+    if (timerCount === 5) {
+      timerCount--;
+    }
+  }, 1000);
+  return time;
+};
