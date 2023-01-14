@@ -1,6 +1,10 @@
 var startButton = document.querySelector("#start");
 var timer = document.querySelector("#time");
 var startScreen = document.querySelector("#start-screen");
+var questionsDiv = document.querySelector("#questions");
+// ----------------------------------------------------------
+
+
 
 // A start button that when clicked a timer starts and the first question appears.
 
@@ -16,7 +20,9 @@ var startScreen = document.querySelector("#start-screen");
 
 // A start button that when clicked a timer starts and the first question appears.
 
-startButton.addEventListener("click", displayAnswers);
+var displayAnswers = displayQuestionsAndAnswers(questionArray);
+
+// startButton.addEventListener("cli);
 
 // Make a var playQuiz = false
 var playQuiz = false;
@@ -74,3 +80,10 @@ startTimer = function () {
   }, 1000);
   return time;
 };
+
+startButton.addEventListener("click", function () {
+  displayQuestionsAndAnswers(questionArray);
+  startTimer();
+  startScreen.setAttribute("hidden", "hide");
+  questionsDiv.className = "show";
+});
