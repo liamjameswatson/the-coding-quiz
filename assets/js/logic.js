@@ -1,91 +1,68 @@
-var startButton = document.querySelector("#start");
-var timer = document.querySelector("#time");
-var startScreen = document.querySelector("#start-screen");
+var startScreen = document.querySelector(".start");
 var questionDiv = document.querySelector("#questions");
+var questionTitle = document.querySelector("#question-title");
 var choices = document.querySelector("#choices");
-var endScreen = document.querySelector("#end-screen");
-// ----------------------------------------------------------
+var choicesList = document.createElement("ul");
 
-// Make a var playQuiz = false
-var playQuiz = false;
-// Make a var timerCount = 0
-var timerCount = 0;
-// Make a var Currentscore = 0
-var Currentscore;
-// Make a var highScore = 0
-var highScore;
+var highScore = 0;
+var score = 0;
+var currentQuestion = 0;
 
-startTimer = function () {
-  var time = setInterval(function () {
-    timerCount++;
-    timer.innerHTML = timerCount;
-  }, 1000);
-  return time;
-};
-
-// hide the start
-function hideStartScreen() {
-  return startScreen.classList.add("hide");
-}
-
-// -----------DISPLAY Question -------------------------
 function displayQuestion(currentQuestion) {
-  // Remove the hide class to show div
-  questionDiv.classList.remove("hide");
-  // questionDiv.innerHTML = "";
-  var question = quizArray[currentQuestion];
-  var answerList = document.createElement("ul");
-  // current question displayed in questionDiv h2
-  questionDiv.children[0].innerHTML = question.questionText;
-  // In choices div - make a unordered list
-  questionDiv.children[1].appendChild(answerList);
+  console.log("displaying question..." + currentQuestion);
+  // display the question
+  questionTitle.innerText = quizArray[currentQuestion].question;
+  //   make a unordered list - for the choices
+  choices.appendChild(choicesList);
 
-  // for each answer of the current question
-  for (var i = 0; i < quizArray[currentQuestion].answers.length; i++) {
-    // Create a list-item and display the answer
-    var answerListItem = document.createElement("li");
-    answerList.appendChild(answerListItem).innerHTML =
-      quizArray[currentQuestion].answers[i];
+  for (var i = 0; i < quizArray[currentQuestion].choices.length; i++) {
+    // for each choice create a list item
+    var choice = document.createElement("li");
+    // display each choice on each list item
+    choicesList.appendChild(choice).innerText =
+      quizArray[currentQuestion].choices[i];
   }
+  checkAnswer(currentQuestion);
 }
 
-// ---------------Check Answer-------------------
-function checkAnswer(event) {
-  // if user clicks on right answer
-  if (event.target.innerHTML === quizArray[currentQuestion].correctAnswer) {
-    console.log("correct");
-    // increase the current question + 1
-    currentQuestion++;
-    console.log("currentQuestion = " + currentQuestion);
-  } else {
-    // if user clicks on wrong answer
-    console.log("wrong");
-
-    // increase the current question + 1
-    currentQuestion++;
-    // increase the timer by 10 seconds
-    timerCount = +10;
-    console.log("currentQuestion = " + currentQuestion);
-  }
-}
-
-startButton.addEventListener("click", function () {
-  startTimer();
-  startScreen.setAttribute("hidden", "hide");
-  questionDiv.className = "show";
+function startQuiz() {
+  // hide screen and set score to 0
+  startScreen.classList.add("hide");
+  score = 0;
   currentQuestion = 0;
-  displayQuestion(currentQuestion);
-  choices.addEventListener("click", checkAnswer);
-});
+}
 
-// if (currentQuestion < quizArray.length) {
-//   displayQuestion(currentQuestion);
-//   choices.addEventListener("click", checkAnswer);
-// }
+function checkAnswer(currentQuestion) {
+  console.log("checking question..." + currentQuestion);
+  // match the click to the answer
+  choicesList.addEventListener("click", function (event) {
+    console.log(event.target.innerText);
+    questionTitle.innerText = "";
+    choicesList.innerText = "";
+    if (event.target.innerText === quizArray[currentQuestion].answer) {
+      console.log("correct " + currentQuestion);
+      //   clear inner text
+      //   currentQuestion++
+      currentQuestion++;
+      score = +10;
+      console.log(score);
+      //   display next question
+    } else {
+      // if user clicks on wrong answer
+      console.log("wrong");
 
-// for (var i = 0; i < quizArray.length; i++) {
-//   displayQuestion(currentQuestion);
-//   choices.addEventListener("click", checkAnswer);
-// }
+      // increase the current question + 1
+      currentQuestion++;
+      // increase the timer by 10 seconds
+      timerCount = +10;
+      console.log("currentQuestion = " + currentQuestion);
+    }
+    displayQuestion(currentQuestion);
+  });
+}
 
-// questionDiv.innerHTML = "";
+startQuiz();
+questionDiv.classList.remove("hide");
+displayQuestion(currentQuestion);
+
+console.log(quizArray[0].choices.length);
