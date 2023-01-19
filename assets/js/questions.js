@@ -10,9 +10,9 @@ var quizArray = [
     answer: "1995",
   },
   {
-    question: "What is 1+1?",
-    choices: ["2", "1", "4", "404"],
-    answer: "2",
+    question: "Who won the FA cup in 1976?",
+    choices: ["Southampton", "Arsenal", "Man Utd", "Leeds"],
+    answer: "Southampton",
   },
 ];
 
