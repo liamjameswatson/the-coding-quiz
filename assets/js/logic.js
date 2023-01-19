@@ -71,9 +71,8 @@ function checkAnswer(currentQuestion) {
     }
     if (currentQuestion === quizArray.length - 1) {
       questionDiv.classList.add("hide");
-      var score = timer.innerHTML;
       setTimeout(function () {
-        displayEndScreen(score);
+        displayEndScreen();
       }, 300);
     } else {
       currentQuestion++;
@@ -84,21 +83,21 @@ function checkAnswer(currentQuestion) {
   });
 }
 
-function startQuiz() {
-  // hide screen and set score to 0
+startButton.addEventListener("click", function () {
   startScreen.classList.add("hide");
   currentQuestion = 0;
-}
-
-startButton.addEventListener("click", function () {
-  startQuiz();
-  countDown = setInterval(startTimer, 1000);
   questionDiv.classList.remove("hide");
+  countDown = setInterval(startTimer, 1000);
   displayQuestion(currentQuestion);
 });
 
 // End Screen
-function displayEndScreen(score) {
+function displayEndScreen() {
+  // stop the timer
+  clearInterval(countDown);
+  // set the score to be the timer
+  var score = timer.innerHTML;
+
   // show the end screen
   endScreen.classList.remove("hide");
   // display the score
