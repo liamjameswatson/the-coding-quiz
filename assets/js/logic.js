@@ -24,7 +24,7 @@ var submitButton = document.querySelector("#submit");
 
 var highScore = 0;
 var currentQuestion = 0;
-var timerCount = 5;
+var timerCount = 60;
 timer.innerHTML = timerCount;
 // --- set timer 60 seconds
 function startTimer() {
