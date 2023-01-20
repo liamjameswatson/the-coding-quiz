@@ -20,9 +20,9 @@ validationDisplayDiv.append(validationText);
 // End Screen
 var endScreen = document.querySelector("#end-screen");
 var finalScore = document.querySelector("#final-score");
+// var initials = document.querySelector("#initials").value;
 var submitButton = document.querySelector("#submit");
 
-var highScore = 0;
 var currentQuestion = 0;
 var timerCount = 60;
 timer.innerHTML = timerCount;
@@ -97,9 +97,15 @@ function displayEndScreen() {
   clearInterval(countDown);
   // set the score to be the timer
   var score = timer.innerHTML;
-
   // show the end screen
   endScreen.classList.remove("hide");
   // display the score
   finalScore.innerText = score;
+  submitButton.addEventListener("click", function (event) {
+    var userInitials = initials.value;
+    console.log("initials... " + userInitials);
+    console.log("score... " + score);
+    localStorage.setItem(userInitials, score);
+    location.href = "highscores.html";
+  });
 }
