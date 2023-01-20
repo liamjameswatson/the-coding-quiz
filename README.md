@@ -21,7 +21,7 @@ This project contains a quiz, with the following features:
 - The user can also clear the highscore, if desired.
 
 - In order to create this, I used DOM manipulation to add, remove classes to elements, create elements.
-- I have attached eventListeners to the desired buttons, and added the relevant functions. 
+- I have attached eventListeners to the desired buttons, and added the relevant functions.
 - I used a series of for loops to display the next question and to validate each answer.
 - A set interval was used for the time, that displays a new number every second, counting down.
 - A timeout is used to pause, when each answer is clicked, to give enough time for the correct/wrong answer to be displayed to the user.
@@ -33,7 +33,7 @@ To use the quiz, click on the start button. The first question will appear. Clic
 
 ## Screenshot
 
-![Screenshot](./assets/screenshot.jpg)
+![Screenshot](./assets/screenshot-of-quiz.jpg)
 
 ## The website
 
