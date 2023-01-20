@@ -42,13 +42,14 @@ var quizArray = [
     answer: "object",
   },
   {
-    question: "How do you repeat the same block of code, in multiple places, with javaScript? ?",
+    question:
+      "How do you repeat the same block of code, in multiple places, with javaScript? ?",
     choices: ["A data type", "An array", "A function", "An element"],
     answer: "A function",
   },
   {
     question: "jquery is a type of what?",
     choices: ["libary", "boolean", "expression", "function"],
-    answer: "library",
+    answer: "libary",
   },
 ];
