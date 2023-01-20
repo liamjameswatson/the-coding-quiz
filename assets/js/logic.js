@@ -74,11 +74,13 @@ function checkAnswer(currentQuestion) {
   // match the click to the answer
   choicesList.addEventListener("click", function (event) {
     if (event.target.innerText === quizArray[currentQuestion].answer) {
-      validationText.innerText = "Correct";
+      validationText.innerText =
+        "Correct -- " + quizArray[currentQuestion].answer;
       playCorrect();
     } else {
       timerCount = timerCount - 10;
-      validationText.innerText = "Wrong";
+      validationText.innerText =
+        "Wrong -- " + quizArray[currentQuestion].answer;
       playWrong();
     }
     if (currentQuestion === quizArray.length - 1) {
@@ -90,7 +92,7 @@ function checkAnswer(currentQuestion) {
       currentQuestion++;
       setTimeout(function () {
         displayQuestion(currentQuestion);
-      }, 300);
+      }, 800);
     }
   });
 }
