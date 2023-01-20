@@ -15,6 +15,3 @@ var quizArray = [
     answer: "Southampton",
   },
 ];
-
-// console.log(quizArray);
-// console.log(quizArray[0]);
