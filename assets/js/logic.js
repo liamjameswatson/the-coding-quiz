@@ -15,7 +15,17 @@ questionDiv.append(validationDisplayDiv);
 validationDisplayDiv.classList.add("validation");
 var validationText = document.createElement("p");
 validationDisplayDiv.append(validationText);
+
 // sounds
+function playCorrect() {
+  var correctSound = new Audio("./assets/sfx/correct.wav");
+  correctSound.play();
+}
+
+function playWrong() {
+  var incorrectSound = new Audio("./assets/sfx/incorrect.wav");
+  incorrectSound.play();
+}
 
 // End Screen
 var endScreen = document.querySelector("#end-screen");
@@ -65,9 +75,11 @@ function checkAnswer(currentQuestion) {
   choicesList.addEventListener("click", function (event) {
     if (event.target.innerText === quizArray[currentQuestion].answer) {
       validationText.innerText = "Correct";
+      playCorrect();
     } else {
       timerCount = timerCount - 10;
       validationText.innerText = "Wrong";
+      playWrong();
     }
     if (currentQuestion === quizArray.length - 1) {
       questionDiv.classList.add("hide");
