@@ -2,10 +2,6 @@
 
 An interactive quiz website
 
-# Console-Finances
-
-Analysing financial records
-
 ## Description
 
 This project contains a quiz, with the following features:
