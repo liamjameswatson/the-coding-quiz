@@ -34,7 +34,7 @@ var finalScore = document.querySelector("#final-score");
 var submitButton = document.querySelector("#submit");
 
 var currentQuestion = 0;
-var timerCount = 60;
+var timerCount = 120;
 timer.innerHTML = timerCount;
 // --- set timer 60 seconds
 function startTimer() {
@@ -75,12 +75,12 @@ function checkAnswer(currentQuestion) {
   choicesList.addEventListener("click", function (event) {
     if (event.target.innerText === quizArray[currentQuestion].answer) {
       validationText.innerText =
-        "Correct -- " + quizArray[currentQuestion].answer;
+        "Correct -- " + quizArray[currentQuestion].fullAnswer;
       playCorrect();
     } else {
       timerCount = timerCount - 10;
       validationText.innerText =
-        "Wrong -- " + quizArray[currentQuestion].answer;
+        "Wrong -- " + quizArray[currentQuestion].fullAnswer;
       playWrong();
     }
     if (currentQuestion === quizArray.length - 1) {
