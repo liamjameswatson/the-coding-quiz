@@ -75,12 +75,12 @@ function checkAnswer(currentQuestion) {
   choicesList.addEventListener("click", function (event) {
     if (event.target.innerText === quizArray[currentQuestion].answer) {
       validationText.innerText =
-        "Correct -- " + quizArray[currentQuestion].fullAnswer;
+        "Correct -- " + quizArray[currentQuestion].answer;
       playCorrect();
     } else {
       timerCount = timerCount - 10;
       validationText.innerText =
-        "Wrong -- " + quizArray[currentQuestion].fullAnswer;
+        "Wrong -- " + quizArray[currentQuestion].answer;
       playWrong();
     }
     if (currentQuestion === quizArray.length - 1) {
